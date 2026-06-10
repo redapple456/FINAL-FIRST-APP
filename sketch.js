@@ -365,7 +365,7 @@ function Layers() {
     Up = true;
 
     if (state === "APP" || state === "DESIGN") {
-      gCode += "// --- STARTING LAYER " + i + " ---\n";
+      gCode += "; --- STARTING LAYER " + i + " ---\n";
       
       let currentZ = (i - 1) * layerHeightVal;
       gCode += `G1 Z${currentZ.toFixed(3)} F300\n`;
@@ -797,8 +797,8 @@ function goToMenu() {
 
 function generateLogic() {
   // 1. HEADER
-  gCode = "G21 // Set units to mm\n";
-  gCode += "G90 // Absolute positioning\n";
+  gCode = "G21 ; Set units to mm\n";
+  gCode += "G90 ; Absolute positioning\n";
   //gCode += "G1 Z0.2 F300\n";
 
   let cols = 7; 
@@ -834,8 +834,8 @@ function generateLogic() {
   }
 
   // 4. FOOTER
-  gCode += "G1 Z5 // Lift tool up\n";
-  gCode += "M30 // Program End\n";
+  gCode += "G1 Z5 ; Lift tool up\n";
+  gCode += "M30 ; Program End\n";
   
   // Reset startX/Y back to the UI values so the preview doesn't break
   startX = baseStartX;
